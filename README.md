@@ -1,6 +1,5 @@
-# 2L-Ouest-Services
+# ll-Ouest-Services
 Prestation de services de nettoyage professionnel
-
 
 project-root/
 ├── backend/
