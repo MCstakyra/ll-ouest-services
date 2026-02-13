@@ -1,0 +1,39 @@
+{
+  "showcases": [
+    {
+      "title": "Nettoyage de Bureau",
+      "before": {
+        "url": "/assets/images/transforme1.png",
+        "description": "Bureau encombré et poussiéreux avant notre intervention."
+      },
+      "after": {
+        "url": "/assets/images/transforme2.png",
+        "description": "Bureau propre, organisé et prêt à l'emploi après nettoyage."
+      }
+    },
+    {
+      "title": "Entretien Industriel",
+      "before": {
+        "url": "/assets/images/before-garden.png",
+        "description": "Site industriel sale avec résidus avant nettoyage."
+      },
+      "after": {
+        "url": "/assets/images/after-garden.png",
+        "description": "Site industriel impeccable et sécurisé après notre service."
+      }
+    },
+    {
+      "title": "Espaces Commerciaux",
+      "before": {
+        "url": "/assets/images/before-garden.png",
+        "description": "Magasin désordonné avec sols sales avant intervention."
+      },
+      "after": {
+        "url": "/assets/images/after-garden.png",
+        "description": "Magasin éclatant de propreté, attractif pour les clients."
+      }
+    }
+   
+   
+  ]
+}
