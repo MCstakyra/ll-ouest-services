@@ -1,0 +1,738 @@
+:root {
+  --ll-blue: #2563EB;
+  --ll-dark-blue: #1E40AF;
+  --ll-dark-green: #10b981;
+  --ll-light-gray: #EDEDEC;
+  --ll-medium-gray: #A1A09A;
+  --ll-text-gray: #706F6C;
+  --ll-black: #1B1B18;
+  --ll-white: #FDFDFC;
+  --ll-light-bg: #FAFAFA;
+  --sidebar-light: #F5F5F5;
+  --sidebar-dark: #1A1A1A;
+}
+
+.dark {
+  --ll-blue: #2563EB;
+  --ll-dark-blue: #1E40AF;
+  --ll-light-gray: #EDEDEC;
+  --ll-medium-gray: #A1A09A;
+  --ll-text-gray: #706F6C;
+  --ll-black: #1B1B18;
+  --ll-white: #FDFDFC;
+  --ll-light-bg: #FAFAFA;
+  --sidebar-light: #F5F5F5;
+  --sidebar-dark: #1A1A1A;
+}
+
+html.dark{
+
+    background-color: var(--sidebar-dark);
+    color: var(--ll-light-bg);
+
+}
+
+
+input:focus {
+  outline: none;   /* enlève le contour bleu */
+  border: none;    /* enlève la bordure */
+  box-shadow: none; /* enlève aussi l'effet de halo sur certains navigateurs */
+}
+
+input, textarea {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+input:disabled, textarea:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variante avec focus personnalisé */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  outline: none;
+  border: 1px solid var(--ll-blue);
+  box-shadow: 0 0 4px rgba(0, 122, 255, 0.4); 
+}
+
+
+
+
+         .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+         .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+         .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+
+
+
+.animate-gradient-scroll {
+  animation: gradientScroll 5s linear infinite;
+}
+
+@keyframes gradientScroll {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.dropdown-content a{
+  color: var(--ll-text-gray) !important;
+}
+
+
+.sidebar {
+  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.sidebar-closed {
+  transform: translateX(-100%);
+}
+
+.chat-sidebar-closed {
+  transform: translateX(100%);
+}
+
+.t-custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.t-custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+  margin: 8px;
+}
+
+.t-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 9999px;
+}
+
+.t-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+
+.sidebar-item .tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.sidebar-item:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.border-effect {
+  position: relative; /* Indispensable pour que le pseudo-élément soit positionné par rapport au conteneur */
+}
+
+.border-effect::after {
+  content: '';
+  pointer-events: none;
+  position: fixed; 
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.dark .border-effect::after {
+  border-color: rgba(255, 255, 255, 0.12); /* ou la classe Tailwind correspondante */
+}
+
+/* Active l'effet et l'anime */
+.border-effect.active::after {
+  opacity: 1;
+}
+
+/* La transition se fait sur ces propriétés */
+.border-effect::after {
+  transition: all 0.5s ease;
+  inset: 0;
+}
+
+
+
+.nav-logo {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-open .nav-logo,
+.chat-sidebar-open .nav-logo {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.chat-toggle-button {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.chat-toggle-button.chat-open {
+  transform: translateY(0);
+}
+
+.chat-toggle-button.chat-closed {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.blurred-header {
+  backdrop-filter: blur(10px);
+  transition: opacity 0.3s ease;
+}
+
+.blurred-header.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-dropdown-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: top right;
+}
+
+.auth-dropdown-menu.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.auth-dropdown-menu.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.auth-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-menu-item:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--ll-blue);
+  transform: translateX(2px);
+}
+
+.auth-dropdown-toggle svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.auth-dropdown-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.auth-combined-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem ;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  color: var(--ll-white);
+}
+
+.auth-combined-button:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--ll-blue);
+}
+
+.dark .auth-combined-button {
+  color: var(--ll-light-gray);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.auth-menu-backdrop {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(229, 231, 235, 0.4);
+}
+
+.dark .auth-menu-backdrop {
+  background-color: rgba(28, 28, 28, 0.7);
+  border: 1px solid rgba(62, 62, 58, 0.4);
+}
+
+.dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.dropdown-menu.open {
+  max-height: 500px; /* Ajusté pour permettre l'affichage complet des sous-menus */
+}
+
+.dropdown-toggle i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-toggle[aria-expanded="true"] i {
+  transform: rotate(90deg);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.chat-panel {
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chat-panel.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--ll-blue);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--ll-dark-blue);
+        }
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: var(--ll-blue) transparent;
+        }
+
+
+      #sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1000;
+          overflow-y: auto;
+      }
+
+      .sidebar-open #sidebar {
+          transform: translateX(0);
+      }
+
+
+      #chat-sidebar {
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1000;
+          overflow-y: auto;
+      }
+
+      .chat-sidebar-open #chat-sidebar {
+          transform: translateX(0);
+      }
+
+      .content-main {
+          transition: margin-left 0.5s ease-in-out, margin-right 0.5s ease-in-out, width 0.5s ease-in-out, padding 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+      }
+
+      /* Additional styles for smooth collapsing */
+      #chat-sidebar.collapsed {
+          width: 0 !important;
+          min-width: 0 !important;
+          opacity: 0;
+          pointer-events: none;
+          transition: width 0.5s ease-in-out, min-width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      }
+
+      #chat-sidebar.collapsed .custom-scrollbar,
+      #chat-sidebar.collapsed #chat-sidebar-container,
+      #chat-sidebar.collapsed .flex {
+          opacity: 0;
+          width: 0;
+          pointer-events: none;
+          transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out;
+      }
+
+      #chat-sidebar.collapsed .collapsed-hidden {
+          display: none !important;
+      }
+
+      @media (min-width: 1024px) {
+          #chat-sidebar.collapsed .collapsed-hidden {
+              display: block;
+          }
+      }
+
+      @keyframes fadeSlideIn {
+          0% { opacity: 0; transform: translateY(15px); }
+          100% { opacity: 1; transform: translateY(0); }
+      }
+
+
+
+button, a {
+    transition: color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+html.transition-none, html.transition-none * {
+    transition: none !important;
+}
+
+/* Custom animations */
+@keyframes fade-in-right {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in-right {
+    animation: fade-in-right 1s ease-out;
+    color: #3191ff;
+}
+
+#banner-carousel, #product-carousel {
+    scroll-behavior: smooth;
+}
+.text-shadow-glow {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-indicator-mobile:focus {
+    outline: 1px solid #D97706;
+    outline-offset: 2px;
+}
+
+
+
+
+nav {
+    -ms-overflow-style: none !important; 
+    scrollbar-width: none !important;     
+}
+
+nav::-webkit-scrollbar {
+    display: none !important;
+}
+
+
+main img[src*="afrix-logo.png"] {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}
+
+
+.chat-panel {
+    will-change: transform, opacity; /* Optimisation GPU */
+    backface-visibility: hidden; /* Anti-crénelage */
+    transform-style: preserve-3d;
+}
+
+#conversationPanel,
+#messagesPanel {
+    transition: opacity 300ms ease-out, transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Animation d'entrée par le haut */
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de sortie vers le haut */
+@keyframes slideUpFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Classes personnalisées pour SweetAlert2 */
+.swal2-toast.custom-toast {
+  animation: slideDownFade 0.4s ease-out forwards;
+}
+
+.swal2-toast.custom-toast.swal2-hide {
+  animation: slideUpFade 0.4s ease-in forwards !important;
+}
+
+
+
+/* Animation d'apparition pour le dropdown */
+#profile-dropdown {
+    opacity: 0;
+    transform: translateY(10px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, max-height 0.4s ease-out;
+}
+
+/* Pour un dropdown visible, on annule l'effet d'animation */
+#profile-dropdown.visible {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 24rem; /* max-h-96 correspond à environ 24rem (384px) */
+}
+
+/* Modal transitions */
+#edit-modal {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#edit-modal.hidden {
+    opacity: 0;
+}
+
+#edit-modal > div {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Group hover effect for edit buttons */
+.group:hover .opacity-0 {
+    opacity: 1;
+}
+
+/* Input focus styles */
+input:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Common styles for social links */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 12px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon styles */
+.social-link i {
+  font-size: 1.25rem;
+  color: #ffffff;
+  transition: color 0.3s ease-in-out;
+  z-index: 1;
+}
+
+/* Focus and hover states */
+.social-link:hover,
+.social-link:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* Accessibility focus ring */
+.social-link:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Ripple effect on hover */
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.social-link:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* =========================
+   === Social Platforms ===
+   ========================= */
+
+/* Facebook */
+.social-link.facebook {
+  background-color: #1877F2;
+}
+.social-link.facebook:hover,
+.social-link.facebook:focus {
+  background-color: transparent;
+  border-color: #1877F2;
+}
+.social-link.facebook:hover i,
+.social-link.facebook:focus i {
+  color: #1877F2;
+}
+
+/* Twitter */
+.social-link.twitter {
+  background-color: #1DA1F2;
+}
+.social-link.twitter:hover,
+.social-link.twitter:focus {
+  background-color: transparent;
+  border-color: #1DA1F2;
+}
+.social-link.twitter:hover i,
+.social-link.twitter:focus i {
+  color: #1DA1F2;
+}
+
+
+
+.social-link.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-link.instagram:hover,
+.social-link.instagram:focus {
+  background: transparent;
+  border-color: #E1306C;
+}
+.social-link.instagram:hover i,
+.social-link.instagram:focus i {
+  color: #E1306C;
+}
+
+/* LinkedIn */
+.social-link.linkedin {
+  background-color: #0A66C2;
+}
+.social-link.linkedin:hover,
+.social-link.linkedin:focus {
+  background-color: transparent;
+  border-color: #0A66C2;
+}
+.social-link.linkedin:hover i,
+.social-link.linkedin:focus i {
+  color: #0A66C2;
+}
+
+.lottie-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.lottie-placeholder {
+    position: absolute;
+    inset: 0; 
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Effet shimmer */
+.lottie-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: shimme 1.5s infinite;
+}
+
+@keyframes shimme {
+    100% {
+        transform: translateX(100%);
+    }
+}
