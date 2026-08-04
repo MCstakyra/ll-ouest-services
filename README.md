@@ -1,83 +1,103 @@
 # ll-Ouest-Services
+
 Prestation de services de nettoyage professionnel
 
+## Structure du projet
+
+```text
 project-root/
+│
 ├── backend/
 │   ├── config/
-│   │   ├── firebase.js          # Configuration et initialisation de Firebase (Auth, Firestore, Storage, Messaging)
-│   │   └── config.js            # Configurations générales (ports, URLs, etc.)
+│   │   ├── firebase.js              # Configuration Firebase (Auth, Firestore, Storage, Messaging)
+│   │   └── config.js                # Configuration générale (ports, URLs, etc.)
+│   │
 │   ├── controllers/
-│   │   ├── authController.js    # Contrôleurs pour l'authentification (login, register, logout)
-│   │   ├── contactController.js # Contrôleurs pour les formulaires de contact et envois d'emails
-│   │   ├── serviceController.js # Contrôleurs pour la gestion des services (CRUD)
-│   │   ├── reviewController.js  # Contrôleurs pour les avis et témoignages clients
-│   │   ├── chatController.js    # Contrôleurs pour la gestion du chat instantané via WebSockets
-│   │   ├── notificationController.js # Contrôleurs pour les notifications push/email
-│   │   └── adminController.js   # Contrôleurs pour le dashboard admin (mises à jour contenus)
+│   │   ├── authController.js        # Authentification (login, register, logout)
+│   │   ├── contactController.js     # Gestion des formulaires de contact
+│   │   ├── serviceController.js     # CRUD des services
+│   │   ├── reviewController.js      # Gestion des avis clients
+│   │   ├── chatController.js        # Chat temps réel (WebSockets)
+│   │   ├── notificationController.js# Notifications push/email
+│   │   └── adminController.js       # Dashboard administrateur
+│   │
 │   ├── middleware/
-│   │   ├── authMiddleware.js    # Middleware pour vérification JWT via Firebase Auth
-│   │   ├── errorMiddleware.js   # Middleware pour gestion des erreurs globales
-│   │   ├── rateLimitMiddleware.js # Middleware pour limitation de taux (anti-DDoS)
-│   │   └── corsMiddleware.js    # Middleware pour configuration CORS
+│   │   ├── authMiddleware.js        # Vérification JWT (Firebase Auth)
+│   │   ├── errorMiddleware.js       # Gestion globale des erreurs
+│   │   ├── rateLimitMiddleware.js   # Protection contre les attaques (Rate Limiting)
+│   │   └── corsMiddleware.js        # Configuration CORS
+│   │
 │   ├── models/
-│   │   ├── userModel.js         # Schéma Firestore pour les utilisateurs (admins/clients)
-│   │   ├── serviceModel.js      # Schéma pour les services de nettoyage
-│   │   ├── reviewModel.js       # Schéma pour les avis clients
-│   │   ├── contactModel.js      # Schéma pour les demandes de contact
-│   │   └── chatMessageModel.js  # Schéma pour les messages de chat
+│   │   ├── userModel.js             # Utilisateurs
+│   │   ├── serviceModel.js          # Services
+│   │   ├── reviewModel.js           # Avis clients
+│   │   ├── contactModel.js          # Demandes de contact
+│   │   └── chatMessageModel.js      # Messages du chat
+│   │
 │   ├── repositories/
-│   │   ├── userRepo.js          # Repository pour opérations DB sur users via Firestore
-│   │   ├── serviceRepo.js       # Repository pour services
-│   │   ├── reviewRepo.js        # Repository pour reviews
-│   │   ├── contactRepo.js       # Repository pour contacts
-│   │   └── chatRepo.js          # Repository pour chat messages
+│   │   ├── userRepo.js              # Accès aux utilisateurs (Firestore)
+│   │   ├── serviceRepo.js           # Accès aux services
+│   │   ├── reviewRepo.js            # Accès aux avis
+│   │   ├── contactRepo.js           # Accès aux contacts
+│   │   └── chatRepo.js              # Accès aux messages du chat
+│   │
 │   ├── routes/
-│   │   ├── authRoutes.js        # Routes API pour authentification
-│   │   ├── contactRoutes.js     # Routes pour contacts et formulaires
-│   │   ├── serviceRoutes.js     # Routes pour gestion services
-│   │   ├── reviewRoutes.js      # Routes pour avis
-│   │   ├── chatRoutes.js        # Routes pour initialisation chat (WebSocket endpoints)
-│   │   ├── notificationRoutes.js # Routes pour notifications
-│   │   └── adminRoutes.js       # Routes pour admin dashboard APIs
+│   │   ├── authRoutes.js            # Routes d'authentification
+│   │   ├── contactRoutes.js         # Routes des formulaires de contact
+│   │   ├── serviceRoutes.js         # Routes des services
+│   │   ├── reviewRoutes.js          # Routes des avis
+│   │   ├── chatRoutes.js            # Routes du chat
+│   │   ├── notificationRoutes.js    # Routes des notifications
+│   │   └── adminRoutes.js           # Routes du tableau de bord
+│   │
 │   ├── services/
-│   │   ├── emailService.js      # Service pour envoi emails via Nodemailer/SendGrid
-│   │   ├── notificationService.js # Service pour push notifications via Firebase Messaging
-│   │   ├── storageService.js    # Service pour upload/stockage fichiers via Firebase Storage
-│   │   └── loggerService.js     # Service pour logging (console + fichiers si besoin)
+│   │   ├── emailService.js          # Envoi d'emails
+│   │   ├── notificationService.js   # Notifications Firebase
+│   │   ├── storageService.js        # Gestion des fichiers
+│   │   └── loggerService.js         # Journalisation
+│   │
 │   ├── utils/
-│   │   ├── errorUtils.js        # Utilitaires pour gestion erreurs
-│   │   ├── validationUtils.js   # Utilitaires pour validation données (Joi ou custom)
-│   │   └── helperUtils.js       # Fonctions helpers générales (dates, strings)
-│   ├── app.js                   # Fichier principal du serveur Express + Socket.io
-│   ├── .env                     # Variables d'environnement (clés Firebase, SMTP, etc.)
-│   └── package.json             # Dépendances Node.js (express, socket.io, firebase-admin, etc.)
+│   │   ├── errorUtils.js            # Gestion des erreurs
+│   │   ├── validationUtils.js       # Validation des données
+│   │   └── helperUtils.js           # Fonctions utilitaires
+│   │
+│   ├── app.js                       # Point d'entrée Express + Socket.io
+│   ├── .env                         # Variables d'environnement
+│   └── package.json                 # Dépendances backend
+│
 ├── frontend/
 │   ├── public/
-│   │   ├── index.html           # Page Accueil
-│   │   ├── about.html           # Page A propos
-│   │   ├── services.html        # Page Nos Services
-│   │   ├── realizations.html    # Page Réalisations (photos/vidéos avant/après)
-│   │   ├── reviews.html         # Page Avis Clients
-│   │   ├── contact.html         # Page Contact
-│   │   ├── mentions.html        # Page Mentions Légales et RGPD
-│   │   └── admin.html           # Dashboard Admin (protégé par auth)
+│   │   ├── index.html               # Accueil
+│   │   ├── about.html               # À propos
+│   │   ├── services.html            # Services
+│   │   ├── realizations.html        # Réalisations
+│   │   ├── reviews.html             # Avis clients
+│   │   ├── contact.html             # Contact
+│   │   ├── mentions.html            # Mentions légales
+│   │   └── admin.html               # Dashboard administrateur
+│   │
 │   ├── css/
-│   │   └── tailwind.css         # Fichier CSS généré par Tailwind (post-process)
+│   │   └── tailwind.css             # Styles Tailwind CSS
+│   │
 │   ├── js/
-│   │   ├── main.js              # Script principal (init AOS, Swiper, etc.)
-│   │   ├── auth.js              # Gestion authentification front (Firebase Auth SDK)
-│   │   ├── contact.js           # Script pour formulaire contact (fetch API)
-│   │   ├── chat.js              # Script pour chat instantané (Socket.io client + RxJS observables)
-│   │   ├── map.js               # Intégration Leaflet pour maps
-│   │   ├── admin.js             # Scripts pour dashboard admin (CRUD via APIs)
-│   │   ├── notifications.js     # Gestion notifications front (Firebase Messaging SDK)
-│   │   └── utils.js             # Utilitaires front (error handling, lazy loading)
+│   │   ├── main.js                  # Script principal
+│   │   ├── auth.js                  # Authentification
+│   │   ├── contact.js               # Formulaire de contact
+│   │   ├── chat.js                  # Chat temps réel
+│   │   ├── map.js                   # Carte Leaflet
+│   │   ├── admin.js                 # Dashboard administrateur
+│   │   ├── notifications.js         # Notifications Firebase
+│   │   └── utils.js                 # Fonctions utilitaires
+│   │
 │   ├── assets/
-│   │   ├── images/              # Dossier pour images statiques (logo, etc.)
-│   │   │   └── logo.png         # Exemple : Logo entreprise (fourni par client)
-│   │   ├── videos/              # Dossier pour vidéos statiques
-│   │   └── icons/               # Dossier pour icônes (Heroicons ou custom)
-│   └── tailwind.config.js       # Configuration Tailwind CSS (palette couleurs personnalisée)
-├── .gitignore                   # Fichiers à ignorer (node_modules, .env, etc.)
-├── README.md                    # Documentation projet
-└── deploy.sh                    # Script shell pour déploiement (ex. Vercel pour front, Firebase pour back)
+│   │   ├── images/
+│   │   │   └── logo.png             # Logo de l'entreprise
+│   │   ├── videos/                  # Vidéos
+│   │   └── icons/                   # Icônes
+│   │
+│   └── tailwind.config.js           # Configuration Tailwind
+│
+├── .gitignore                       # Fichiers ignorés par Git
+├── README.md                        # Documentation du projet
+└── deploy.sh                        # Script de déploiement
+```
